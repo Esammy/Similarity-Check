@@ -25,8 +25,8 @@ def index():
         path = 'image/jpeg/'
         assure_path_exists(path)
         
-        image1.save(path)
-        image2.save(path)
+        image1.save(path+image1.filename)
+        image2.save(path+image2.filename)
 
         # Preprocess the images
         img1 = resize_image(path+image1.filename)
