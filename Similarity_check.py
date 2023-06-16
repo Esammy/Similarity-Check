@@ -1,5 +1,6 @@
 from tensorflow import keras
 import cv2
+import os
 
 # Load the model
 def load_model():
@@ -53,6 +54,14 @@ def resize_image(image, face=False):
         image = cv2.imread(image)
         new_size = (128, 128)
         return cv2.resize(image, new_size)
+    
+def searchFolder(path):
+    try:
+        files_ = os.listdir(dir)
+        for i in files_:
+            resize_image(path + i)
+    except:
+        pass
     
 if __name__ == "__main__":
     image_1 = resize_image('1.jpg')
