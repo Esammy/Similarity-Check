@@ -10,26 +10,26 @@
     <div class="image-display">
       <div class="each-img">
         1
-        {% if img1 %}
-        <img src="{{ img1 }}" alt="Image 1"><br>
-        {% endif %}
+<!--         {% if img1 %} -->
+        <img src="{{ img1 }}" id="previewImage1" alt="Image 1"><br>
+<!--         {% endif %} -->
       </div>
 
       <div class="each-img">
         2
-        {% if img2 %}
-          <img src="{{ img2 }}" alt="Image 2"><br>
-        {% endif %}
+<!--         {% if img2 %} -->
+          <img src="{{ img2 }}" id="previewImage2" alt="Image 2"><br>
+<!--         {% endif %} -->
       </div>
     </div>
 
     <div class="img-cont">
       <form class="row g-3" method="POST" enctype="multipart/form-data" action="/">
         <div class="col-md-6" id="img1">
-          <input type="file" id="imageInput" name="image1" accept="image/*" onchange="previewImage(event)">
+          <input type="file" id="imageInput" name="image1" accept="image/*" onchange="previewImage(event, 'previewImage1')">
         </div>
         <div class="col-md-6" id="img2">
-          <input type="file" id="imageInput" name="image2" accept="image/*" onchange="previewImage(event)">
+          <input type="file" id="imageInput" name="image2" accept="image/*" onchange="previewImage(event, 'previewImage2')">
         </div>
         <div class="col-12" id="img-submit">
            <input type="submit" value="Submit">
@@ -38,11 +38,11 @@
     </div>
 
     <script>
-      function previewImage(event) {
+      function previewImage(event, imageId) {
         var input = event.target;
         var reader = new FileReader();
         reader.onload = function() {
-          var img = document.getElementById('previewImage');
+          var img = document.getElementById(imageId);
           img.src = reader.result;
           img.style.display = 'block';
         };
